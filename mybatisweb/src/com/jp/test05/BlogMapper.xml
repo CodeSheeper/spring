@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jp.text05.BlogMapper">
+<select id="selectBlogDetails2" resultMap="detailedBlogResultMap">
+     select
+       B.id as blog_id,
+       B.title as blog_title,
+       B.author_id as blog_author_id,
+       A.id as author_id,
+       A.name as author_username,
+       A.password as author_password
+       from blog B
+       left outer join Author A on B.author_id = A.id
+       where B.id = #{id}
+  </select>
+   <select id="selectBlogDetails" resultMap="detailedBlogResultMap">
+     select
+       B.id as blog_id,
+       B.title as blog_title,
+       B.author_id as blog_author_id,
+       A.id as author_id,
+       A.name as author_username,
+       A.password as author_password
+       from blog B
+       left outer join Author A on B.author_id = A.id
+  </select>
+    <resultMap type="Blog" id="detailedBlogResultMap">
+  <id property="id" column="blog_id"/>
+   <result property="title" column="blog_title"/>
+   <association property="author" column="blog_author_id" javaType="Author">
+  <id property="id" column="author_id"/>
+  <result property="name" column="author_username"/>
+</association>
+  </resultMap>
+
+	<resultMap id="blogResultMap" type="Blog" >
+		<association property="author" column="author_id" select="selectAuthor" javaType="Author"></association>
+	</resultMap>
+	
+	<select id="selectBlog" resultMap="blogResultMap">
+		select * from blog where id=#{id}
+	</select>
+	
+	<select id="selectAuthor" resultType="Author">
+		select * from author where id=#{id}
+	</select>
+
+<!-- <select id="selectBlog" resultMap="blogResult">
+  SELECT * FROM BLOG WHERE ID = #{id}
+</select>
+
+<select id="selectAuthor" resultType="Author">
+  SELECT * FROM AUTHOR WHERE ID = #{id}
+</select>
+ 
+<resultMap id="blogResult" type="Blog">
+  <association property="author" column="author_id" javaType="Author" select="selectAuthor"></association>
+</resultMap> -->
+</mapper>

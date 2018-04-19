@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<import resource="bean.xml" />
+	<import resource="bean2.xml" />
+	<bean id="b2" class="com.yw.test01.Cat" name="b">
+	</bean>
+	<!-- <bean class="com.yw.test01.Cat" name="b">
+	</bean> -->
+	<!-- <bean id="a" class="com.yw.test01.Cat">
+	</bean> -->
+	<alias name="b" alias="b3"/>
+	
+</beans>
