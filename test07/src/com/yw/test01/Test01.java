@@ -25,16 +25,21 @@ public class Test01 {
 		BeanFactory factory = (BeanFactory) context;
 
 		System.out.println("factory="+factory);
-		Object obj=factory.getBean("dog");
-		Object obj2=factory.getBean("dog2");
-		System.out.println("obj="+obj);
-		System.out.println("obj2="+obj2);
+//		Object obj=factory.getBean("dog");
+//		Object obj2=factory.getBean("dog2");
+		Object obj3=factory.getBean("dog3");
+//		System.out.println("obj="+obj);
+//		System.out.println("obj2="+obj2);
+		System.out.println("obj3="+obj3);
 		
-		Dog dog=(Dog)obj;
-		System.out.println(dog.getA()+"==="+dog.isB());
+//		Dog dog=(Dog)obj;
+//		System.out.println(dog.getA()+"==="+dog.isB());
+//		
+//		Dog dog2=(Dog)obj2;
+//		System.out.println(dog2.getA()+"==="+dog2.isB());
 		
-		Dog dog2=(Dog)obj2;
-		System.out.println(dog2.getA()+"==="+dog2.isB());
+		Dog dog3=(Dog)obj3;
+		System.out.println("dog3.getC()===="+dog3.getC());
 
 	}
 

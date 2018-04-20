@@ -3,9 +3,19 @@ package com.yw.test01;
 public class Dog {
 	private Integer a;
 	private boolean b;
+	private String c;
+	
+		
+	public void setC(String c) {
+		this.c = c;
+	}
 	
 	
-	
+	public String getC() {
+		return c;
+	}
+
+
 	public void setA(Integer a) {
 		this.a = a;
 	}

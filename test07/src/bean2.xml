@@ -10,10 +10,12 @@ http://www.springframework.org/schema/beans http://www.springframework.org/schem
 		<property name="a" value="10" />
 	</bean>
 
-
-
 	<bean id="dog2" class="com.yw.test01.Dog">
 		<constructor-arg type="Integer" value="3">
 		</constructor-arg>
+	</bean>
+	
+	<bean id="dog3" class="com.yw.test01.Dog">
+		<property name="c" value="hello"></property>
 	</bean>
 </beans>
