@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean id="theTargetBean" class="com.yw.test04.Target" />
+	<bean id="theClientBean" class="com.yw.test04.Client">
+		<property name="targetName">
+			<ref bean="theTargetBean" />
+		</property>
+	</bean>
+
+	<bean id="moreComplexObject" class="com.yw.test06.ComplexObject">
+		<!-- results in a setAdminEmails(java.util.Properties) call -->
+		<property name="adminEmails">
+			<props>
+				<prop key="administrator">administrator@somecompany.org</prop>
+				<prop key="support">support@somecompany.org</prop>
+				<prop key="development">development@somecompany.org</prop>
+			</props>
+		</property>
+		<!-- results in a setSomeList(java.util.List) call -->
+		<property name="someList">
+			<list>
+				<value>a list element followed by a reference</value>
+				<ref bean="myDataSource" />
+			</list>
+		</property>
+		<!-- results in a setSomeMap(java.util.Map) call -->
+		<property name="someMap">
+			<map>
+				<entry>
+					<key>
+						<value>yup an entry</value>
+					</key>
+					<value>just some string</value>
+				</entry>
+				<entry>
+					<key>
+						<value>yup a ref</value>
+					</key>
+					<ref bean="myDataSource" />
+				</entry>
+			</map>
+		</property>
+		<!-- results in a setSomeSet(java.util.Set) call -->
+		<property name="someSet">
+			<set>
+				<value>just some string</value>
+				<ref bean="myDataSource" />
+			</set>
+		</property>
+	</bean>
+
+	<bean id="myDataSource"  class="com.yw.test06.MyDataSource">
+		
+	</bean>
+
+
+</beans>

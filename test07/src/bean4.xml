@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean id="a" class="com.yw.test02.A">
+		<!-- setter injection using the nested <ref/> element -->
+		<!-- 嵌入一个ref的子元素 -->
+		<property name="b">
+			<ref bean="beanid2" />
+		</property>
+
+		<!-- setter injection using the neater 'ref' attribute -->
+		<!-- 在里面加入ref的属性 -->
+		<!-- <property name="b" ref="beanid2" /> -->
+
+	</bean>
+	<bean id="beanid2" class="com.yw.test02.B">
+		<property name="name" value="zhangsan"></property>
+	</bean>
+	
+	<bean id="c" class="com.yw.test02.C">
+		<constructor-arg index="0" value="100">
+		
+		</constructor-arg>
+		<constructor-arg index="1" value="90" />
+		<constructor-arg type="String" value="lisi"></constructor-arg>
+	
+	</bean>
+</beans>
